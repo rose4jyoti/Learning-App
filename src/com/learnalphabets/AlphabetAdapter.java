@@ -1,5 +1,6 @@
 package com.learnalphabets;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class AlphabetAdapter  extends BaseAdapter {
+public class AlphabetAdapter extends BaseAdapter {
 	private Context context;
-	private final String[] countries;
+	private final String[] alphabets;
 
-	public AlphabetAdapter(Context context, String[] countries) {
+	public AlphabetAdapter(Context context, String[] alphabets) {
 		this.context = context;
-		this.countries = countries;
+		this.alphabets = alphabets;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -32,25 +33,43 @@ public class AlphabetAdapter  extends BaseAdapter {
 
 			TextView textView = (TextView) gridView.findViewById(R.id.label);
 			
-			textView.setText(countries[position]);
+			textView.setText(alphabets[position]);
 
 			ImageView flag = (ImageView) gridView .findViewById(R.id.flag);
+			
 
-			String mobile = countries[position];
+			String mobile = alphabets[position];
 
-			if (mobile.equals("Apple")) {
+			if (mobile.equals("apple")) {
 				flag.setImageResource(R.drawable.apple);
-			} else if (mobile.equals("Aeroplane")) {
-				flag.setImageResource(R.drawable.airplane);
-			} else if (mobile.equals("Ant")) {
+				
+			} else if (mobile.equals("ant")) {
 				flag.setImageResource(R.drawable.ant);
-			} else if (mobile.equals("Alligator")) {
+			} else if (mobile.equals("airplane")) {
+				flag.setImageResource(R.drawable.airplane);
+			} else if (mobile.equals("alligator")) {
 				flag.setImageResource(R.drawable.alligator);
-			} else if (mobile.equals("Arrow")) {
+			} else if (mobile.equals("arrow")) {
 				flag.setImageResource(R.drawable.arrow);
-			} else {
-				flag.setImageResource(R.drawable.arm);
-			}
+			} else if (mobile.equals("arm")) {
+					flag.setImageResource(R.drawable.arm);
+			} else if (mobile.equals("ball")) {
+				flag.setImageResource(R.drawable.ball);
+		  } else if (mobile.equals("banana")) {
+				flag.setImageResource(R.drawable.banana);
+		  } else if (mobile.equals("boy")) {
+				flag.setImageResource(R.drawable.boy);
+		  } else if (mobile.equals("bell")) {
+				flag.setImageResource(R.drawable.bell);
+		  } else if (mobile.equals("boat")) {
+				flag.setImageResource(R.drawable.boat);
+		  } else if (mobile.equals("book")) {
+				flag.setImageResource(R.drawable.book);
+		  }else{
+				flag.setImageResource(R.drawable.def);
+		  }
+			
+			//int i = context.getResources().getIdentifier(mobile, "drawable", this.getPackageName());
 
 		} else {
 			gridView = (View) convertView;
@@ -61,7 +80,7 @@ public class AlphabetAdapter  extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return countries.length;
+		return alphabets.length;
 	}
 
 	@Override

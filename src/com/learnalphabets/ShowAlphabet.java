@@ -1,5 +1,7 @@
 package com.learnalphabets;
 
+import java.util.ArrayList;
+
 import com.learnalphabet.database.DataBaseAdapter;
 import com.learnalphabets.extras.BeanClass;
 
@@ -19,7 +21,7 @@ public class ShowAlphabet extends Activity {
 	private TextView currentText;
 	private GridView gridView;
   private String oneAlphabet;
-	 
+  private String[] alphabets = new String[6]; 
 
 	
 	@Override
@@ -31,39 +33,66 @@ public class ShowAlphabet extends Activity {
 		currentText = (TextView)findViewById(R.id.current_text);
 		oneAlphabet = BeanClass.getAlphabetSelected();
 		currentText.setText(oneAlphabet);
-		 
-		Toast.makeText(getApplicationContext(), oneAlphabet, 1000).show();
+		
+		
+		if(!(oneAlphabet.equals("A") || oneAlphabet.equals("B"))){
+			
+			Toast.makeText(getApplicationContext(),"Testing Please click on A or B text", Toast.LENGTH_SHORT).show();
+		
+			
+			String[] testingAlphabets = new String[]{"test","test","test","test","test","test"};
+			
+			gridView.setAdapter(new AlphabetAdapter(this, testingAlphabets));
+	  	
+			
+		
+		}else{
 		
 		 /*
 		  * Set database
 		  */
-		 
 		DataBaseAdapter mDbHelper = new DataBaseAdapter(this);         
   	mDbHelper.createDatabase();       
   	mDbHelper.open();
   	mDbHelper.getSixAlphabet(oneAlphabet);
-  	Toast.makeText(getApplicationContext(), "Data selected", 1000).show();
+  	//Toast.makeText(getApplicationContext(), "Data selected", 1000).show();
+  	mDbHelper.close();
   	
-
-		String[] alphabets = new String[] { "Apple", "Aeroplane","Ant", "Arm","Alligator","Arrow" };
+  	/*
+  	 * get the six alphabet name from database 
+  	 */
+  	ArrayList arrayList = BeanClass.getArrayList();
+		for(int i=0; i<arrayList.size(); i++){
 		
+			String data = (String) arrayList.get(i);
+			alphabets[i] = data;
+		}
 		gridView.setAdapter(new AlphabetAdapter(this, alphabets));
-
+  	
+		}
+		
+    /*
+     * get the name by clicking on gridview
+     */
+  	
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
-				Toast.makeText(
-						getApplicationContext(),
-						((TextView) v.findViewById(R.id.label)).getText(), Toast.LENGTH_SHORT).show();
-
+				int position, long id) {
+				
+				Toast.makeText(getApplicationContext(),((TextView) v.findViewById(R.id.label)).getText(), Toast.LENGTH_SHORT).show();
+				
+				Intent i = new Intent(getApplicationContext(), ShowCategory.class);
+				startActivity(i);
+				finish();
+				
+				
 			}
 		});
 		
 		
-		mDbHelper.close();
+		
+		
 	}
-	
-	
 	
 	
 	@Override
@@ -73,5 +102,4 @@ public class ShowAlphabet extends Activity {
 		startActivity(i);
 		finish();
 	}
-
 }
