@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+     <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center" 
+        android:background="#308d9e">
+        
+         <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:text="Learn Alphabets"
+          android:textColor="#fff"
+          android:textSize="26sp" />
+        
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
+         
+         <TextView
+          android:id="@+id/current_text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="20dp"
+          android:textColor="#000"
+          android:textAllCaps="true"
+          android:textStyle="bold"
+          android:textSize="80sp" />
+         
+         <GridView 
+		    android:id="@+id/gridView"
+		    android:numColumns="auto_fit"
+		    android:gravity="center"
+		    android:columnWidth="100dp"
+		    android:stretchMode="columnWidth"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" >
+		 
+		</GridView>
+         
+     </LinearLayout>
+	 <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="#308d9e"
+        android:gravity="center" >
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Presented by peezbowl.com"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+        
+    </RelativeLayout>
+</RelativeLayout>
