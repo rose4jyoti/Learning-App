@@ -1,5 +1,7 @@
 package com.learnalphabets;
 
+import java.lang.reflect.Method;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -39,10 +41,22 @@ public class AlphabetAdapter extends BaseAdapter {
 			
 
 			String mobile = alphabets[position];
-
+		
+			
+			/*Method m;
+			try {
+				m = R.drawable.class.getMethod("apple");
+				flag.setImageResource((Integer)m.invoke(null));
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			*/
+			
+			
+			
 			if (mobile.equals("apple")) {
 				flag.setImageResource(R.drawable.apple);
-				
 			} else if (mobile.equals("ant")) {
 				flag.setImageResource(R.drawable.ant);
 			} else if (mobile.equals("airplane")) {
@@ -68,6 +82,8 @@ public class AlphabetAdapter extends BaseAdapter {
 		  }else{
 				flag.setImageResource(R.drawable.def);
 		  }
+			
+			
 			
 			//int i = context.getResources().getIdentifier(mobile, "drawable", this.getPackageName());
 

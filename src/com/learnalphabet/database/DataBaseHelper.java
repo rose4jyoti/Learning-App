@@ -35,7 +35,7 @@ public void createDataBase() throws IOException
     boolean mDataBaseExist = checkDataBase(); 
     if(!mDataBaseExist) 
     { 
-        this.getReadableDatabase(); 
+        this.getWritableDatabase(); 
         this.close(); 
         try  
         { 
@@ -47,7 +47,21 @@ public void createDataBase() throws IOException
         { 
             throw new Error("ErrorCopyingDataBase"); 
         } 
-    } 
+    }else{
+  		//By calling this method and empty database will be created into the default system path
+      //of your application so we are gonna be able to overwrite that database with our database.
+  	this.getReadableDatabase();
+
+  	try {
+
+		copyDataBase();
+
+	} catch (IOException e) {
+
+  		throw new Error("Error copying database");
+
+  	}
+} 
 } 
     //Check that the database exists here: /data/data/your package/databases/Da Name 
     private boolean checkDataBase() 

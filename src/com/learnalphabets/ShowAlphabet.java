@@ -79,22 +79,20 @@ public class ShowAlphabet extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v,
 				int position, long id) {
 				
-				Toast.makeText(getApplicationContext(),((TextView) v.findViewById(R.id.label)).getText(), Toast.LENGTH_SHORT).show();
+				String aName = (String) ((TextView) v.findViewById(R.id.label)).getText();
 				
+			//	Toast.makeText(getApplicationContext(),aName, Toast.LENGTH_SHORT).show();
+				
+				Bundle bundle = new Bundle();
+        bundle.putString("CategoryName", oneAlphabet);
+        //bundle.putString("NextCategoryName","B");
 				Intent i = new Intent(getApplicationContext(), ShowCategory.class);
+				i.putExtras(bundle);
 				startActivity(i);
 				finish();
-				
-				
 			}
 		});
-		
-		
-		
-		
 	}
-	
-	
 	@Override
 	public void onBackPressed() {
 		
