@@ -7,6 +7,8 @@ import com.learnalphabets.extras.BeanClass;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +41,6 @@ public class ShowAlphabet extends Activity {
 			
 			Toast.makeText(getApplicationContext(),"Testing Please click on A or B text", Toast.LENGTH_SHORT).show();
 		
-			
 			String[] testingAlphabets = new String[]{"test","test","test","test","test","test"};
 			
 			gridView.setAdapter(new AlphabetAdapter(this, testingAlphabets));
@@ -85,13 +86,15 @@ public class ShowAlphabet extends Activity {
 				
 				Bundle bundle = new Bundle();
         bundle.putString("CategoryName", oneAlphabet);
-        //bundle.putString("NextCategoryName","B");
+        bundle.putString("ImageName",aName);
 				Intent i = new Intent(getApplicationContext(), ShowCategory.class);
 				i.putExtras(bundle);
 				startActivity(i);
 				finish();
 			}
 		});
+		
+		
 	}
 	@Override
 	public void onBackPressed() {

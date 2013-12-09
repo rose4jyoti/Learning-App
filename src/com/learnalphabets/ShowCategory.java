@@ -65,7 +65,7 @@ public class ShowCategory extends Activity {
 	private int viewScroll=0;
 	
 	private Boolean isVoice = true;
-	private Boolean isText = false;
+	private Boolean isText = true;
 	private Boolean isSwipe = false;
 	private Boolean isRandomOrder = false;    
 	
@@ -74,6 +74,7 @@ public class ShowCategory extends Activity {
 	private String strName 		 = "";
 	private String lengStrName = "";
 	private String Category 	 = "";
+	private String Image 	 = "";
 	private String textTemp 	 = "";
 	private String Swipe    	 = "";
 	private int fromFinish  	 = 0;
@@ -208,7 +209,7 @@ public class ShowCategory extends Activity {
 									 }
 							    		 	 
 							   		 try { 
-							   		   String strsnd1 = soundName[temp-1];
+							   		     String strsnd1 = soundName[temp-1];
 					    	    	   strsnd1 = strsnd1.replace(".mp3", "");
 					    	    	   strsnd1 = strsnd1.trim();
 					    	    	   strsnd1 = strsnd1.replaceAll(" ", "_");
@@ -440,54 +441,14 @@ public class ShowCategory extends Activity {
 	}
 	
 	public void onCreate(Bundle savedInstanceState) throws NullPointerException,OutOfMemoryError{
-		
-
     super.onCreate(savedInstanceState);
-    
-    
-    //final boolean customTitleSupported = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     setContentView(R.layout.show_category);
-     // if (customTitleSupported) {
-      //    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_bar);
-      //}
     
-      
    	Bundle bundle = this.getIntent().getExtras();
     Category      = bundle.getString("CategoryName");
-    //NextCategory  = bundle.getStringArrayList("NextCategoryName");
-   // fromFinish    = bundle.getInt("fromFinish");
-   // position      = bundle.getInt("Position");
-  //  swipeInt      = bundle.getInt("Swipe");
-  //  musicLength   = bundle.getInt("musicLength");
-  //  viewScroll    = bundle.getInt("viewScroll");
+    Image         = bundle.getString("ImageName");
     
-    
-  	 // Toast.makeText(getApplicationContext(), Category, Toast.LENGTH_LONG).show();
-    
-    /*
-     * for next category
-     */
-    
-  /*  String[] mStringArray = new String[NextCategory.size()];
-  	mStringArray = NextCategory.toArray(mStringArray);
-  	
-  	for(int i = 0; i < mStringArray.length ; i++){
-  		NextFlashCategory.add(mStringArray[i]);
-  	}
-  		if(fromFinish != 0){
-  			for(int i = 0; i < mStringArray.length ; i++){
-  	    		NextFlashCategory.add(mStringArray[i]);
-  			if(Category.compareTo(mStringArray[i])==0){
-  			i+=1;
-  			Category=mStringArray[i];
-  			break;
-  			//Toast.makeText(getApplicationContext(),Category, Toast.LENGTH_SHORT).show();
-  		 }
-  		}
-  		
-  		}
-    */
-
+    Toast.makeText(getApplicationContext(), Image, 1000).show();
    
     btnSetting    = (ImageButton) findViewById (R.id.setting_btn1);
     btnHome       = (ImageButton) findViewById(R.id.home_btn1);
@@ -498,19 +459,17 @@ public class ShowCategory extends Activity {
     btnSetting.setOnClickListener(settingsListener);
 	  btnHome.setOnClickListener(homeListener);
 	   
-	 
-      //lengText.setText("hello world");
-       
       myDbHelper = new DataBaseHelper(this);
-    temp       = 1;
+      
+      temp  = 1;
  
       fetchSettingsTable();
       
       fetchTextTableData();
       
       if(isSwipe){
+      	
       	setSwipeFunctionality();
-
       }  
       
       final TextView text = (TextView) findViewById(R.id.headerText);
@@ -521,8 +480,6 @@ public class ShowCategory extends Activity {
       	text.setVisibility(View.GONE);
       }
       
-      
-	//fetchItemTable();
 	try {
 	    //Fetching total record from Item table
         SQLiteQueryBuilder qbOne = new SQLiteQueryBuilder();
@@ -542,36 +499,31 @@ public class ShowCategory extends Activity {
         
         setImageDetails(cur);
         
-        
- 
-
-        
         if(!isRandomOrder){
         	
-        	System.out.println("======================= testing ===================");
         
-        	// Toast.makeText(getApplicationContext(), " in not random order", 1000).show();
-        	
-      	 
       	   final TextView txtHeader = (TextView) findViewById(R.id.headerText);
              String strName = titleName[0];
              
-             
-             //lengText.lengTitleName[0];
            try { 
-	        	//temp = 1 ; 
+          	 
         	    txtHeader.setText(strName); 
         	    
-	        	String str = imageName[temp];
+        	    
+        	    String str =  imageName[temp];
+        	    
+        	   
+        	    
+        	    
+        	    
 	            str        = str.trim();
 	            str        = str.toLowerCase();
-	            
-	          //  Toast.makeText(getApplicationContext(), str, 1000).show();
 	            
 	            img        = (ImageView)findViewById(R.id.AImage);
 	            int id     = getResources().getIdentifier(str ,"drawable", getPackageName());
 	            img.setImageResource(id);
-	            img.setScaleType(ImageView.ScaleType.FIT_XY);    
+	            img.setScaleType(ImageView.ScaleType.FIT_XY);  
+	            
 	    	    
         	} catch(Exception n) {
 				n.printStackTrace();
@@ -583,7 +535,7 @@ public class ShowCategory extends Activity {
 	            str        = str.toLowerCase();
 	            img        = (ImageView)findViewById(R.id.AImage);
 	            int id     = getResources().getIdentifier(str ,"drawable", getPackageName());
-	        	img.setImageResource(id);
+	        	  img.setImageResource(id);
 	        	
 			}
 		
@@ -591,14 +543,15 @@ public class ShowCategory extends Activity {
       }
       
       ArrayList<String> strArySound = new ArrayList<String>();  
-      ArrayList<String> strActSound = new ArrayList<String>();  
+     // ArrayList<String> strActSound = new ArrayList<String>();  
       if (cur.moveToFirst()) {
           do {
           	try {
             	String mSoundRaw = cur.getString(3);
+            	
             	strArySound.add(mSoundRaw);
-            	String mActSoundRaw = cur.getString(3);
-            	strActSound.add(mActSoundRaw);
+            	//String mActSoundRaw = cur.getString(3);
+            //	strActSound.add(mActSoundRaw);
           	} catch(Exception n) {
   				n.printStackTrace();
   				Log.i("Error","Array Error="+n);
@@ -606,14 +559,10 @@ public class ShowCategory extends Activity {
           } while (cur.moveToNext());
       }
       
-     soundName = (String[]) strArySound.toArray(new String[strArySound.size()]);
-      
- 
+      	soundName = (String[]) strArySound.toArray(new String[strArySound.size()]);
+      	
   	
-  	
-  	
-  	
-  if(!isRandomOrder){
+  
  	    	 final TextView txtHeader = (TextView) findViewById(R.id.speakar); 
  	    	///  add on 03/04/12
 			  txtHeader.setOnClickListener(new  View.OnClickListener() {        
@@ -624,7 +573,8 @@ public class ShowCategory extends Activity {
 				    		 mediaPlayer.release();
 			    		 }	 
 			   		   String strsnd1 = soundName[temp-1];
-			   		  startMediaplayerSpeaker(strsnd1);
+			   		   startMediaplayerSpeaker(strsnd1);
+			   		   
 	    	    	  } catch (Exception e) {
 							e.fillInStackTrace();
 					  } finally {
@@ -632,6 +582,8 @@ public class ShowCategory extends Activity {
 					  }
 		    	 }
 	 			});
+			  
+			  
 			
 			 final TextView txtHeader3 = (TextView) findViewById(R.id.headerText); 
 			 txtHeader3.setOnClickListener(new  View.OnClickListener() {
@@ -650,7 +602,7 @@ public class ShowCategory extends Activity {
   	    	    	   String strsnd1 = soundName[0];
   	    	    	   mediaPlayer.release(); 
   	    	    	   startMediaplayer(strsnd1);
-  	    	    	  
+  	    	    	   
 				   } catch (Exception e) {
 						//
 				   } finally {
@@ -658,77 +610,34 @@ public class ShowCategory extends Activity {
 				   }
 	    	       	  }
 	    	   	   });
-	           String strsnd1   = soundName[0];
+			   
+			   
+	       String strsnd1   = soundName[0];
 		 	   strsnd1          = strsnd1.replace(".mp3", "");
 		 	   strsnd1          = strsnd1.trim();
 		 	   strsnd1          = strsnd1.replaceAll(" ", "_");
 		 	   final int idsnd1 = getResources().getIdentifier(strsnd1 , "raw", getPackageName());
 		 	   mediaPlayer      = MediaPlayer.create(getBaseContext(), idsnd1);
+		 	   
+		 	  // Toast.makeText(getApplicationContext(), strsnd1, 1000).show();
+		 	   
 		 	   if(isVoice) {
 		 		   mediaPlayer.setVolume(100,100);   
 		 		   
 		 	   } else {
 		 		   mediaPlayer.setVolume(0,0);
 		 	   } 	
- 	    	
- 	            int id                      = intID[0];  
- 	    	   	SQLiteQueryBuilder qbActOne = new SQLiteQueryBuilder();
- 	    	   	qbActOne.setTables("Alphabets");       
- 	    	   	SQLiteDatabase dbActOne     = myDbHelper.getReadableDatabase();
- 	    	   	Cursor curAct               = qbActOne.query(dbActOne, null, "Id"+" = "+"'"+id+"'" , null, null, null,"Id ASC","1");
- 	    	   	
- 	    	    if(curAct.moveToFirst()) {
- 		    		String strsnd5 = curAct.getString(3);
- 		    		strsnd5 = strsnd5.replace(".mp3", "");
- 			   		strsnd5 = strsnd5.trim();
- 			   		strsnd5 = strsnd5.replaceAll(" ", "_");
- 			   		strsnd5 = strsnd5.replaceAll("-", "_");
- 			   		final int idsnd5 = getResources().getIdentifier(strsnd5 , "raw", getPackageName());
- 			   		if(idsnd5 != 0) { 
- 			   			actMediaPlayer = MediaPlayer.create(getBaseContext(), idsnd5);
- 			   			actMediaPlayer.setVolume(100,100);
-    	    	    
- 			   			mHandler.postDelayed(new Runnable() {
- 							
- 							public void run() {
- 								actMediaPlayer.start();
- 								isActualSoundPlaying = true;
- 							}
- 			   			}, 700);	 
- 			   			actMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {	
- 			   				
- 			   				public void onCompletion(MediaPlayer actMediaPlayer) {
- 			   					try {
- 			   						mediaPlayer.start();
- 			   					} catch (Exception e) {
-						
- 			   						Log.i("Error","Errorrrrr>>>" + e);
- 			   					} finally {
- 			   						mediaPlayer.start();
- 			   						isMediaPlayerActive = true;
- 			   					} 		 	       			 
- 			   				}
- 			   			});
- 			   		} else {
- 			   		     mHandler.postDelayed(new Runnable() {
-		   				 
-		   				 public void run() {
-		   				   try {	 
-		   					 mediaPlayer.start();
-		   				   } catch (Exception e) {
-							 e.printStackTrace();
-						   } finally {
-							 //
-						   }	 
-		   				   isMediaPlayerActive = true;
-		   				 }
-		   			 }, 700);    
- 			   		} 
- 	    	    }
- 	    	 curAct.deactivate();   
- 	    	 curAct.close();
- 	    	 dbActOne.close();  
- 	    }
+		 	   
+		 	   try {
+						mediaPlayer.start();
+					} catch (Exception e) {
+	
+						Log.i("Error","Errorrrrr>>>" + e);
+					} finally {
+						mediaPlayer.start();
+						isMediaPlayerActive = true;
+					} 
+		 	   
       cur.deactivate();
       cur.close();
       dbOne.close();
@@ -748,10 +657,6 @@ public class ShowCategory extends Activity {
     btnPrevious = (Button) findViewById(R.id.btnprevious);
     btnPrevious.setVisibility(4);	
     
-    
-    
-    
-    
     btnPrevious.setOnClickListener(new View.OnClickListener() {
 		
 	public void onClick(View v) {
@@ -760,18 +665,10 @@ public class ShowCategory extends Activity {
 	try {
 				 mediaPlayer.stop();
 				 mediaPlayer.release();
-			   actMediaPlayer.stop();
-			   actMediaPlayer.release();
 	} catch (Exception e) {
 		   e.fillInStackTrace();
 	}
 	
-		
-		
-		
-		
-		
-	 if(!isRandomOrder){
 		if(temp >= 2){	
 			flipper = (ViewFlipper) findViewById(R.id.flipper);
 			temp    = temp - 2 ;
@@ -779,11 +676,14 @@ public class ShowCategory extends Activity {
 			if(temp<0)
 				temp=0;
 			
-	        if(temp != 0){
-	        	btnPrevious.setVisibility(0);
-	        	btnNext.setVisibility(0);
-	        	try{
-	        	String strsnd   = soundName[temp];
+	     if(temp != 0){
+	    	 
+	    	
+        	btnPrevious.setVisibility(0);
+        	btnNext.setVisibility(0);
+        	
+        	try{
+	        String strsnd   = soundName[temp];
 			    strsnd          = strsnd.replace(".mp3", "");
 			    strsnd          = strsnd.trim();
 			    strsnd          = strsnd.replaceAll(" ", "_");
@@ -796,83 +696,23 @@ public class ShowCategory extends Activity {
 				} else {
 				  mediaPlayer.setVolume(0,0);	
 				}
-	        	}catch(Exception e){
+				
+				
+	      }catch(Exception e){
 	        		Log.i("Error","Errorrrrrrrrr in 935 String Array=>"+"temp"+temp+"ERROR=>"+e);
-			     }
-	        	
-	        	try{
-				    int nxtid = intID[temp];  
-	     	    	SQLiteQueryBuilder qbActtwo = new SQLiteQueryBuilder();
-	     	    	qbActtwo.setTables("Alphabets");       
-	     	    	SQLiteDatabase dbActtwo     = myDbHelper.getReadableDatabase();
-	     	    	Cursor curActtwo            = qbActtwo.query(dbActtwo, null, "Id"+" = "+"'"+nxtid+"'" , null, null, null,null,"1");
-	     	    	      
-	     	    	if(curActtwo.moveToFirst()) {
-	     	    		      String strsnd5; 
-	     	    		      strsnd5    = curActtwo.getString(3);
-	     	    		      strsnd5    = strsnd5.replace(".mp3", "");
-	     	    		      strsnd5    = strsnd5.trim();
-	     	    		      strsnd5    = strsnd5.replaceAll(" ", "_");
-	     	    		      strsnd5    = strsnd5.replaceAll("-", "_");
-	     			   		  int idsnd5 = getResources().getIdentifier(strsnd5 , "raw", getPackageName());
-	     			   		  int zero   = 0; 
-	     			   		  if(idsnd5 != zero) {
-	     			   			  actMediaPlayer = MediaPlayer.create(getBaseContext(), idsnd5);
-	     			   		    actMediaPlayer.setVolume(100, 100);
-	     			   		    mHandler.postDelayed(new Runnable() {
-	     			   		    	
-	     			   		    	public void run() {
-			     			   		    try {
-			     			   		    	  actMediaPlayer.start();
-			     			   		    }catch(Exception e) {
-												  e.fillInStackTrace();
-											} finally {
-												//
-											}    
-	     			   		    	
-	     			   		    		isActualSoundPlaying = true;
-	     			   		    	}
-	     			   		    	}, 700);	 
-		   			   	        actMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {	
-							    
-							    public void onCompletion(MediaPlayer actMediaPlayer) {
-									  try {
-										   actMediaPlayer.release();
-										   mediaPlayer.start();
-										   isMediaPlayerActive = true;
-									  }catch(Exception e) {
-										  Log.i("Error","Errorrrrr>>>" + e);
-									   } finally {
-										  //
-									   } 		 	       			 
-							    }
-						       });  			   			 
-	     			   		 } else {
-	     			   			mHandler.postDelayed(new Runnable() {
-			   						   public void run() {
-				   							try {  
-				   								 mediaPlayer.start(); 
-				   								isMediaPlayerActive = true;
-				   							 }catch(Exception e) {
-				   								Log.i("Error","Errorrrrr>>>" + e);
-											   } finally {
-												 //
-											   } 		 	       			 				    	
-			   						   }
-			   					}, 700);
-	     			   		 }	 
-	     	    	    }
-	     	    	 
-	     	    	 curActtwo.close();
-	     	    	 dbActtwo.close();	     
-		           } catch (NullPointerException e) {
-		        	   e.fillInStackTrace();
-		        	   Log.i("Error","Error In 972 ShowCate.=>"+e);
-				   }finally {
-					  
+			   }
+	        
+        	try {
+					   mediaPlayer.start();
+					   isMediaPlayerActive = true;
+				  }catch(Exception e) {
+					  Log.i("Error","Errorrrrr>>>" + e);
+				   } finally {
+					  //
 				   } 
-	     	    	
-	     	      
+        	
+        	
+	        	
 	        } else {
 	        	 
 	        		String strsnd   = soundName[0];
@@ -891,70 +731,17 @@ public class ShowCategory extends Activity {
 			        }catch(Exception e){
 			        	Log.i("Error","Error in 1079 String Array"+e);
 	    		    }
-			        int nxtid = intID[0];  
-     	    	   	SQLiteQueryBuilder qbActtwo = new SQLiteQueryBuilder();
-     	    	   	qbActtwo.setTables("Alphabets");       
-     	    	   	SQLiteDatabase dbActtwo     = myDbHelper.getReadableDatabase();
-     	    	   	Cursor curActtwo            = qbActtwo.query(dbActtwo, null, "Id"+" = "+"'"+nxtid+"'" , null, null, null,"Id ASC","1");
-     	           try{ 
-     	    	    if(curActtwo.moveToFirst()) {
-     		    		 String strsnd5 = curActtwo.getString(3);
-     		    		 strsnd5        = strsnd5.replace(".mp3", "");
-     			   		 strsnd5        = strsnd5.trim();
-     			   		 strsnd5        = strsnd5.replaceAll(" ", "_");
-     			   		 strsnd5        = strsnd5.replaceAll("-", "_");
-     			   		 int idsnd5     = getResources().getIdentifier(strsnd5 , "raw", getPackageName());
-     			   		 int zero       = 0; 
-     			   		 if(idsnd5 != zero) {
-     			   			
-     			   			actMediaPlayer = MediaPlayer.create(getBaseContext(), idsnd5);
-     			   		    actMediaPlayer.setVolume(100, 100);
-     			   		    mHandler.postDelayed(new Runnable() {
-     			   		    	public void run() {
-		     			   		    try {
-			     			   		    	  actMediaPlayer.start();
-		     			   		    }catch(Exception e) {
-												  e.fillInStackTrace();
-									} finally {
-										//
-									}   
-     			   		    		isActualSoundPlaying = true;
-     			   		    	}
-     			   		    	}, 700);	 
-	   			   	        actMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {	
-						    
-						    public void onCompletion(MediaPlayer actMediaPlayer) {
-							  try {
-								   actMediaPlayer.release();
-								   mediaPlayer.start();
-								   isMediaPlayerActive = true;
-							  }catch(Exception e) {
-								  Log.i("Error","Errorrrrr>>>" + e);
-							   } finally {
-								   //
-							   } 		 	       			 
-						    }
-					       });  		  			   			 
-    			   		 } else {
-    			   			mHandler.postDelayed(new Runnable() {
-		   						   public void run() {
-		   							 try {
-		   								mediaPlayer.start();
-		   								isMediaPlayerActive = true;
-		   							 }  catch (Exception e) {
-		   								Log.i("Error","Errorrrrr>>>" + e);
-									 } finally {
-										   //
-									 } 	
-		   						   }
-		   					    }, 700);
-    			   		 }	 
-     	    	    }
-     	    	   curActtwo.close();
-	     	       dbActtwo.close();	     
-     	    	  }catch(Exception e){
-     	    		 Log.i("Error","Error in 1145 String Array"+e);
-    		       }
+			        
+			        try {
+							   actMediaPlayer.release();
+							   mediaPlayer.start();
+							   isMediaPlayerActive = true;
+						  }catch(Exception e) {
+							  Log.i("Error","Errorrrrr>>>" + e);
+						   } finally {
+							   //
+						   } 	
+	
 	        	btnPrevious.setVisibility(4);
 	        	imageView.setVisibility(0);
 	        }
@@ -963,7 +750,7 @@ public class ShowCategory extends Activity {
 	        strcat = strcat.trim(); 
 	        strcat = strcat.toLowerCase();	
 	        
-	        imageView = (ImageView)findViewById(R.id.AImage);
+	    imageView = (ImageView)findViewById(R.id.AImage);
 			int test = getResources().getIdentifier(strcat, "drawable", getPackageName());
 			imageView.setImageResource(test);
 			imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -976,7 +763,7 @@ public class ShowCategory extends Activity {
 							 mediaPlayer.stop();
 							 mediaPlayer.release();
 							 actMediaPlayer.stop();
-						     actMediaPlayer.release();
+						   actMediaPlayer.release();
 	    	    	   }catch(Exception e) {
 						 e.fillInStackTrace();
 					   } finally {
@@ -1028,7 +815,7 @@ public class ShowCategory extends Activity {
 	        flipper.showPrevious(); 
 	        temp++; 
 		   }	
-		 }
+		 
 	   }
 	});
     
@@ -1056,13 +843,8 @@ public class ShowCategory extends Activity {
  	   } catch (Exception e) {
 		  e.fillInStackTrace();
 	   }   
-		  
-	
-			
-			 
-			
-			
-		   if(!isRandomOrder){
+		   
+		
 		    btnPrevious.setVisibility(0);
 		  
 		    if (itotalImage > temp) {
@@ -1121,7 +903,7 @@ public class ShowCategory extends Activity {
 		      //Create Header Text.
 			   try{
 			       strName = titleName[temp];
-			   mHandler.postDelayed(new Runnable() {
+			       mHandler.postDelayed(new Runnable() {
 					
 					public void run() {
 						txtHeader.setText(strName); 
@@ -1146,7 +928,7 @@ public class ShowCategory extends Activity {
 					   Log.i("finally","ERROR in 1429 FINNALLLLLLLLLLLLLY"); 
 					  	
 				   }   
-			  int nxtid = intID[temp];  
+			      int nxtid = intID[temp];  
   	    	  SQLiteQueryBuilder qbActtwo = new SQLiteQueryBuilder();
   	    	  qbActtwo.setTables("Alphabets");       
   	    	  SQLiteDatabase dbActtwo = myDbHelper.getReadableDatabase();
@@ -1156,8 +938,8 @@ public class ShowCategory extends Activity {
   	    		  try{  
   	    		  
   		    		 strsnd5 = curActtwo.getString(3);
-  	    		  	 strsnd5 = strsnd5.replace(".mp3", "");
-  	    	    	 strsnd5 = strsnd5.trim();
+  	    		   strsnd5 = strsnd5.replace(".mp3", "");
+  	    	     strsnd5 = strsnd5.trim();
   			   		 strsnd5 = strsnd5.replaceAll(" ", "_");
   			   		 strsnd5 = strsnd5.replaceAll("-", "_");
   			   		 strsnd5 = strsnd5.toLowerCase();
@@ -1165,14 +947,14 @@ public class ShowCategory extends Activity {
   			   		 int idsnd5 = getResources().getIdentifier(strsnd5 , "raw", getPackageName());
   			   		 
      	    	     if(idsnd5 != 0) {   
-     	    	    	 setActualPlayer(idsnd5);
+     	    	    	// setActualPlayer(idsnd5);
      	    	     }else {    	    	
      	    	    	 mHandler.postDelayed(new Runnable() {
 		   						
 		   					    public void run() {
 	
 		   							try {
-		   								 mediaPlayer.start();
+		   							//	 mediaPlayer.start();
 		   								isMediaPlayerActive = true;
 		   							} catch (Exception e) {
 		   								Log.i("Error","Errorrrrr66>>>" + e);
@@ -1218,7 +1000,7 @@ public class ShowCategory extends Activity {
 	       startActivity(finishpage);
 	       finish(); 
 		 }
-	    } 
+	     
 	  }	
 	}); 
  
@@ -1427,6 +1209,10 @@ public class ShowCategory extends Activity {
 	    strsnd1          = strsnd1.replaceAll(" ", "_");
 	    Log.i("startMediaplayer", "strsnd1 :"+strsnd1);
 	    final int id     = getResources().getIdentifier(strsnd1 , "raw", getPackageName());
+	    
+	  //  Toast.makeText(getApplicationContext(), strsnd1, 1000).show();
+	    
+	    
 	    mediaPlayer      = MediaPlayer.create(getBaseContext(), id);
 	    
 	    Log.i("startMediaplayer", "mediaPlayer create with  id :"+id);
@@ -1434,12 +1220,13 @@ public class ShowCategory extends Activity {
 		    mediaPlayer.setVolume(100,100);
 	    } else {
 		    mediaPlayer.setVolume(0,0);
-		    
 	    }	    
 	    
 	    // change ajay
 	    
-	  //  mediaPlayer.start();
+	    
+	    
+	   mediaPlayer.start();
 	  //  isMediaPlayerActive = true;
 	}
 
@@ -1639,13 +1426,6 @@ public class ShowCategory extends Activity {
 			   e.fillInStackTrace();
 		}
 		
-			
-			
-			
-			 
-			
-			
-			
 			
 		 if(!isRandomOrder){
 			if(temp >= 2){	

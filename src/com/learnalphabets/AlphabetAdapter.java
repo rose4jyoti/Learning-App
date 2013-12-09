@@ -59,14 +59,14 @@ public class AlphabetAdapter extends BaseAdapter {
 				flag.setImageResource(R.drawable.apple);
 			} else if (mobile.equals("ant")) {
 				flag.setImageResource(R.drawable.ant);
-			} else if (mobile.equals("airplane")) {
-				flag.setImageResource(R.drawable.airplane);
+			} else if (mobile.equals("aeroplane")) {
+				flag.setImageResource(R.drawable.aeroplane);
 			} else if (mobile.equals("alligator")) {
 				flag.setImageResource(R.drawable.alligator);
 			} else if (mobile.equals("arrow")) {
 				flag.setImageResource(R.drawable.arrow);
-			} else if (mobile.equals("arm")) {
-					flag.setImageResource(R.drawable.arm);
+			} else if (mobile.equals("almonds")) {
+					flag.setImageResource(R.drawable.almonds);
 			} else if (mobile.equals("ball")) {
 				flag.setImageResource(R.drawable.ball);
 		  } else if (mobile.equals("banana")) {

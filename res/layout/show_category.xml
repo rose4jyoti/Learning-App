@@ -3,13 +3,13 @@
     android:id="@+id/home_container"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#fff" >
+    android:background="#F9FFE5" >
 
     <ViewFlipper
         android:id="@+id/flipper"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="38dip"
+        android:layout_marginTop="50dip"
         android:layout_marginBottom="0dip" >
 
         <ImageView
@@ -23,6 +23,9 @@
         </ImageView>
     </ViewFlipper>
     
+    
+    
+    
     <TextView
         android:id="@+id/headerText"
         android:layout_width="fill_parent"
@@ -32,8 +35,8 @@
         android:textColor="#000"
         android:textSize="14dip"
         android:textStyle="bold"
-      
         >
+        
     </TextView>
 
     <ImageButton
@@ -64,7 +67,7 @@
             android:id="@+id/btnStrip"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
-            android:background="#fff"
+            android:background="#F9FFE5"
             android:gravity="center"
             android:orientation="horizontal" >
             
