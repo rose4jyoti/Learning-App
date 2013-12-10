@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_container1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F9FFE5" >
+
+    <RelativeLayout
+        android:id="@+id/topHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:id="@+id/home_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/home_btn"
+            android:scaleType="centerInside" >
+        </ImageButton>
+
+        <RelativeLayout
+            android:id="@+id/topHeader2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingTop="0dip" >
+
+            <TextView
+                android:id="@+id/headerText"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:background="@drawable/repeat"
+                android:layout_marginTop="5dip" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/setting_btn1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignRight="@+id/header"
+            android:background="@drawable/setting_icn"
+            android:visibility="gone"
+            android:scaleType="centerInside" />
+    </RelativeLayout>
+
+  
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" >
+
+        <RelativeLayout
+            android:id="@+id/save_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/save_layout" >
+
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="55dip"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnprevious"
+                    android:layout_width="80dip"
+                    android:layout_height="45dip"
+                    android:layout_marginBottom="1dip"
+                    android:background="@drawable/previous" >
+                </Button>
+
+                <Button
+                    android:id="@+id/btnnext"
+                    android:layout_width="80dip"
+                    android:layout_height="45dip"
+                    android:layout_marginBottom="1dip"
+                    android:layout_marginLeft="40dip"
+                    android:background="@drawable/next" >
+                </Button>
+            </LinearLayout>
+        </RelativeLayout>
+
+      
+    </RelativeLayout>
+
+      <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="50dp"
+         android:layout_above="@id/bottom_layout"
+	     android:layout_below="@+id/home_btn1">
+
+	 <ViewFlipper
+	     android:id="@+id/flipper"
+	     android:layout_width="fill_parent"
+	     android:layout_height="fill_parent"
+	     android:layout_below="@+id/home_btn1"
+	     android:layout_marginTop="50dip" >
+
+            <include
+                android:id="@+id/first"
+                android:layout_gravity="center"
+                layout="@layout/questionview" />
+        </ViewFlipper>
+    </RelativeLayout>
+    
+</FrameLayout>

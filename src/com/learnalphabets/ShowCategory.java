@@ -3,6 +3,7 @@ package com.learnalphabets;
 import java.util.ArrayList;
 import java.util.Random;
 import com.learnalphabet.database.DataBaseHelper;
+import com.learnalphabets.extras.BeanClass;
 
 
 import android.app.Activity;
@@ -448,7 +449,7 @@ public class ShowCategory extends Activity {
     Category      = bundle.getString("CategoryName");
     Image         = bundle.getString("ImageName");
     
-    Toast.makeText(getApplicationContext(), Image, 1000).show();
+    //Toast.makeText(getApplicationContext(), Image, 1000).show();
    
     btnSetting    = (ImageButton) findViewById (R.id.setting_btn1);
     btnHome       = (ImageButton) findViewById(R.id.home_btn1);
@@ -512,10 +513,6 @@ public class ShowCategory extends Activity {
         	    
         	    String str =  imageName[temp];
         	    
-        	   
-        	    
-        	    
-        	    
 	            str        = str.trim();
 	            str        = str.toLowerCase();
 	            
@@ -529,13 +526,43 @@ public class ShowCategory extends Activity {
 				n.printStackTrace();
 				Log.i("Error","Array Error="+n);
 			} finally {
-				txtHeader.setText(strName); 
-	        	String str = imageName[0];
+				
+				for(int i = 0; i<6; i++){
+					
+					if(Image.equals(imageName[i])){
+						
+						txtHeader.setText(Image); 
+						
+						String str = imageName[i];
+            str        = str.trim();
+            str        = str.toLowerCase();
+            img        = (ImageView)findViewById(R.id.AImage);
+            int id     = getResources().getIdentifier(str ,"drawable", getPackageName());
+        	  img.setImageResource(id);
+						//btnPrevious.setVisibility(4);
+						
+        	  temp = i+1;
+        	  
+					}else{
+						//btnPrevious.setVisibility(0);
+						continue;
+					}
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+				   /*   txtHeader.setText(strName); 
+	        	  String str = imageName[0];
 	            str        = str.trim();
 	            str        = str.toLowerCase();
 	            img        = (ImageView)findViewById(R.id.AImage);
 	            int id     = getResources().getIdentifier(str ,"drawable", getPackageName());
-	        	  img.setImageResource(id);
+	        	  img.setImageResource(id);*/
 	        	
 			}
 		
@@ -612,7 +639,7 @@ public class ShowCategory extends Activity {
 	    	   	   });
 			   
 			   
-	       String strsnd1   = soundName[0];
+	       String strsnd1   = Image;
 		 	   strsnd1          = strsnd1.replace(".mp3", "");
 		 	   strsnd1          = strsnd1.trim();
 		 	   strsnd1          = strsnd1.replaceAll(" ", "_");
@@ -995,8 +1022,9 @@ public class ShowCategory extends Activity {
 	        bundle.putInt("Position", position);
 	        bundle.putInt("musicLength", musicLength);
 	        bundle.putInt("viewScroll", viewScroll);*/
-				 Intent finishpage = new Intent(ShowCategory.this,ShowAlphabet.class);
+				  Intent finishpage = new Intent(ShowCategory.this,ShowAlphabet.class);
 				 //finishpage.putExtras(bundle);
+				 BeanClass.setAlphabetSelected("B");
 	       startActivity(finishpage);
 	       finish(); 
 		 }

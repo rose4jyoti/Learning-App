@@ -33,7 +33,10 @@
             android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"/>
        <activity android:name="com.learnalphabets.ShowCategory"
-            android:theme="@android:style/Theme" 
+            android:theme="@android:style/Theme"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.learnalphabets.QuestionCategory"
+            android:theme="@android:style/Theme"
             android:screenOrientation="portrait"/>
        
     </application>

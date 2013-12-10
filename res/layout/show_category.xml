@@ -45,6 +45,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="250dp"
         android:background="@drawable/setting_icn"
+        android:visibility="gone"
         android:scaleType="centerInside" />
     
      <ImageButton
@@ -87,7 +88,7 @@
             <TextView
             android:id="@+id/speakar"
             android:layout_width="40dip"
-            android:layout_height="35dip"
+            android:layout_height="40dip"
             android:layout_marginRight="30dip"
             android:background="@drawable/repeat"/>
  

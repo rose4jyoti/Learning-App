@@ -28,6 +28,15 @@ public class HomeScreen extends Activity {
     	
       }
      });
+		visualizeAlphabets.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View view) {				
+      	
+      	Intent i = new Intent(getApplicationContext(), QuestionCategory.class);
+      	startActivity(i);
+      	finish();
+    	
+      }
+     });
 		
 	}
 
