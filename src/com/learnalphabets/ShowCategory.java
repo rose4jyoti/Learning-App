@@ -11,9 +11,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -44,9 +48,6 @@ public class ShowCategory extends Activity {
 	
 	private Button btnNext         = null;
 	private Button btnPrevious     = null;
-	
-	private ImageButton btnSetting = null;
-	private ImageButton btnHome    = null;
 	
 	private ImageView img          = null;
 	private ImageView imageView    = null;
@@ -451,14 +452,9 @@ public class ShowCategory extends Activity {
     
     //Toast.makeText(getApplicationContext(), Image, 1000).show();
    
-    btnSetting    = (ImageButton) findViewById (R.id.setting_btn1);
-    btnHome       = (ImageButton) findViewById(R.id.home_btn1);
-	      
     btnPrevious   = (Button) findViewById(R.id.btnprevious);
    	btnNext       = (Button) findViewById(R.id.btnnext);
    	
-    btnSetting.setOnClickListener(settingsListener);
-	  btnHome.setOnClickListener(homeListener);
 	   
       myDbHelper = new DataBaseHelper(this);
       
@@ -506,9 +502,14 @@ public class ShowCategory extends Activity {
       	   final TextView txtHeader = (TextView) findViewById(R.id.headerText);
              String strName = titleName[0];
              
+             //strName = Character.toUpperCase(strName.charAt(0)) + strName.substring(1);
+              char first = Character.toUpperCase(strName.charAt(0));
+							String fc = Character.toString(first);
+						  fc = "<font color='#FF0000'>"+fc+"</font>";
+					  	
            try { 
           	 
-        	    txtHeader.setText(strName); 
+          	 txtHeader.setText(Html.fromHtml(fc + strName.substring(1))); 
         	    
         	    
         	    String str =  imageName[temp];
@@ -531,8 +532,11 @@ public class ShowCategory extends Activity {
 					
 					if(Image.equals(imageName[i])){
 						
-						txtHeader.setText(Image); 
-						
+					
+						char first_char = Character.toUpperCase(Image.charAt(0));
+						String fch = Character.toString(first);
+						fch = "<font color='#FF0000'>"+fch+"</font>";
+						txtHeader.setText(Html.fromHtml(fch + Image.substring(1))); 
 						String str = imageName[i];
             str        = str.trim();
             str        = str.toLowerCase();
@@ -833,7 +837,12 @@ public class ShowCategory extends Activity {
 			 	
 	        mHandler.postDelayed(new Runnable() {
 				public void run() {
-					txtHeader.setText(strName); 
+					//String strName1 = Character.toUpperCase(strName.charAt(0)) + strName.substring(1);
+					//txtHeader.setText(strName1); 
+					char first = Character.toUpperCase(strName.charAt(0));
+					String fc = Character.toString(first);
+					fc = "<font color='#FF0000'>"+fc+"</font>";
+					txtHeader.setText(Html.fromHtml(fc + strName.substring(1))); 
 				}
 			}, 100);	    
 	        	
@@ -930,10 +939,16 @@ public class ShowCategory extends Activity {
 		      //Create Header Text.
 			   try{
 			       strName = titleName[temp];
+			      // strName = Character.toUpperCase(strName.charAt(0)) + strName.substring(1);
+			     
+			        char first = Character.toUpperCase(strName.charAt(0));
+							String fc = Character.toString(first);
+							final String fc1 = "<font color='#FF0000'>"+fc+"</font>";
+							
+			       
 			       mHandler.postDelayed(new Runnable() {
-					
-					public void run() {
-						txtHeader.setText(strName); 
+					  public void run() {
+					  	txtHeader.setText(Html.fromHtml(fc1 + strName.substring(1))); 
 					}
 				}, 100);
 	 		        
@@ -1022,9 +1037,9 @@ public class ShowCategory extends Activity {
 	        bundle.putInt("Position", position);
 	        bundle.putInt("musicLength", musicLength);
 	        bundle.putInt("viewScroll", viewScroll);*/
-				  Intent finishpage = new Intent(ShowCategory.this,ShowAlphabet.class);
+				  Intent finishpage = new Intent(ShowCategory.this,LearnAlphabets.class);
 				 //finishpage.putExtras(bundle);
-				 BeanClass.setAlphabetSelected("B");
+				 //BeanClass.setAlphabetSelected("B");
 	       startActivity(finishpage);
 	       finish(); 
 		 }
@@ -1715,6 +1730,8 @@ public class ShowCategory extends Activity {
 			   }	
 			 }
 	}
+	
+	
 	
 	 @Override
 		public void onBackPressed() {

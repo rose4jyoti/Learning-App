@@ -10,7 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class LearnAlphabets extends Activity {
@@ -29,7 +32,16 @@ public class LearnAlphabets extends Activity {
 			super.onCreate(savedInstanceState);
 	 
 			setContentView(R.layout.learn_alphabets);
-	 
+			
+	
+					
+					LayoutInflater inflater = getLayoutInflater();
+			    View view = inflater.inflate(R.layout.custom_toast_layout,(ViewGroup) findViewById(R.id.relativeLayout1));
+
+			    Toast toast = new Toast(this);
+			    toast.setView(view);
+			    toast.show();
+			
 			gridView = (GridView) findViewById(R.id.gridView1);
 	    
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_alphabet_grid, R.id.text, numbers);

@@ -19,21 +19,46 @@
             android:textColor="#fff"
             android:textSize="26sp" />
     </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="80dp">
+        <ImageView 
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:layout_margin="20dp"
+        	android:src="@drawable/feedback_icon"
+            />
+         <ImageView 
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:layout_margin="20dp"
+        	android:src="@drawable/setting_icon"
+            />
+          <ImageView 
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:layout_margin="20dp"
+        	android:src="@drawable/buy_icon"
+            />
+        
+    </LinearLayout>
      <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="200dp">
     <Button 
 		android:layout_height="60dp" 
 		android:text="Learn Alphabets"
 		android:layout_width="fill_parent" 
 		android:id="@+id/learn_alphabets" 
 		android:layout_gravity="center_horizontal"
-		android:layout_marginTop="140dp"
 		android:layout_marginLeft="30dp"
 		android:layout_marginRight="30dp"
-		android:textSize="18sp"
+		android:textSize="20sp"
 		style="@style/btnStyleShakespeare"></Button>
      <Button 
 		android:layout_height="60dp" 
@@ -44,10 +69,9 @@
 		android:layout_marginTop="30dp"
 		android:layout_marginLeft="30dp"
 		android:layout_marginRight="30dp"
-		android:textSize="18sp"
+		android:textSize="20sp"
 		style="@style/btnStyleShakespeare"></Button>
     </LinearLayout>
-    
      <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -55,7 +79,6 @@
         android:layout_alignParentBottom="true"
         android:background="#308d9e"
         android:gravity="center" >
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

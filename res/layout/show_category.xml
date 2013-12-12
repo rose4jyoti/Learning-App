@@ -3,13 +3,13 @@
     android:id="@+id/home_container"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F9FFE5" >
+    android:background="#fff" >
 
     <ViewFlipper
         android:id="@+id/flipper"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="50dip"
+        android:layout_marginTop="120dip"
         android:layout_marginBottom="0dip" >
 
         <ImageView
@@ -25,38 +25,39 @@
     
     
     
+     <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#308d9e">
+        
+         <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:text="Learn Alphabets"
+          android:textColor="#fff"
+          android:textSize="26sp" />
+        
+    </LinearLayout>
+    
+    
     
     <TextView
         android:id="@+id/headerText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center|center_horizontal"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="40dip"
         android:textColor="#000"
-        android:textSize="14dip"
+        android:textSize="60sp"
         android:textStyle="bold"
         >
         
     </TextView>
 
-    <ImageButton
-        android:id="@+id/setting_btn1"
-         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="250dp"
-        android:background="@drawable/setting_icn"
-        android:visibility="gone"
-        android:scaleType="centerInside" />
     
-     <ImageButton
-        android:id="@+id/home_btn1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/header"
-        android:background="@drawable/home_btn"
-        android:scaleType="fitXY" >
-    </ImageButton>
-
     <RelativeLayout
       
         android:id="@+id/save_layout"
@@ -68,15 +69,16 @@
             android:id="@+id/btnStrip"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
-            android:background="#F9FFE5"
+            android:background="#fff"
             android:gravity="center"
+            android:layout_marginBottom="40dp"
             android:orientation="horizontal" >
             
           
 
             <Button
                 android:id="@+id/btnprevious"
-                android:layout_width="60dip"
+                android:layout_width="45dip"
                 android:layout_height="40dip"
                 android:layout_marginBottom="1dip"
                 android:layout_marginTop="1dip"
@@ -95,7 +97,7 @@
 
             <Button
                 android:id="@+id/btnnext"
-                android:layout_width="60dip"
+                android:layout_width="45dip"
                 android:layout_height="40dip"
                 android:layout_marginTop="1dip"
                 android:layout_marginBottom="1dip"
@@ -104,5 +106,20 @@
             </Button>
         </LinearLayout>
     </RelativeLayout>
-
+ <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="#308d9e"
+        android:gravity="center" >
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Presented by peezbowl.com"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+        
+    </RelativeLayout>
 </RelativeLayout>

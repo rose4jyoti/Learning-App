@@ -3,6 +3,6 @@
 
     <string name="app_name">iAlphabet</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="splash_text">Thanks for downloading iAlphabets. This simple app is designed for pre-school kids to learn alphabets and identify objects. The two key components of this applications are: Learn Alphabets and Visualize them from a set of objects.</string>
+    <string name="splash_footer_text">Designed for preschool children of age between 2-5 years \nPresented by peezbowl.com</string>
 </resources>
