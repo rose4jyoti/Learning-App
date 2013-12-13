@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class HomeScreen extends Activity {
 
-	private Button learnAlphabets;
-	private Button visualizeAlphabets;
+	private Button learnAlphabets, visualizeAlphabets;
+	private ImageView setting;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class HomeScreen extends Activity {
 		setContentView(R.layout.home_screen);
 		learnAlphabets = (Button)findViewById(R.id.learn_alphabets);
 		visualizeAlphabets = (Button)findViewById(R.id.visualize_alphabets);
+		setting = (ImageView)findViewById(R.id.setting);
+		
 		
 		learnAlphabets.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {				
@@ -32,6 +36,15 @@ public class HomeScreen extends Activity {
       public void onClick(View view) {				
       	
       	Intent i = new Intent(getApplicationContext(), QuestionCategory.class);
+      	startActivity(i);
+      	finish();
+    	
+      }
+     });
+		setting.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View view) {				
+      	
+      	Intent i = new Intent(getApplicationContext(), Setting.class);
       	startActivity(i);
       	finish();
     	

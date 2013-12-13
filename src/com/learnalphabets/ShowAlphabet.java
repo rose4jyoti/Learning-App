@@ -37,9 +37,9 @@ public class ShowAlphabet extends Activity {
 		currentText.setText(oneAlphabet);
 		
 		
-		if(!(oneAlphabet.equals("A") || oneAlphabet.equals("B"))){
+		if(!(oneAlphabet.equals("A"))){
 			
-			Toast.makeText(getApplicationContext(),"Testing Please click on A or B text", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),"Testing Please click on A text", Toast.LENGTH_SHORT).show();
 		
 			String[] testingAlphabets = new String[]{"test","test","test","test","test","test"};
 			

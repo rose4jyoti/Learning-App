@@ -48,7 +48,6 @@ public class ShowCategory extends Activity {
 	
 	private Button btnNext         = null;
 	private Button btnPrevious     = null;
-	
 	private ImageView img          = null;
 	private ImageView imageView    = null;
 	private ImageView image        = null;
@@ -191,7 +190,7 @@ public class ShowCategory extends Activity {
 						  imageView = (ImageView)findViewById(R.id.AImage);
 						  imageView.setImageResource(test);
 						  imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-						  imageView.setClickable(true);
+						  imageView.setEnabled(true);
 				    	 }catch(Exception e){
 				    		 Log.i("Error","Error in 1439 String Array"+e);
 		    		       }
@@ -450,7 +449,9 @@ public class ShowCategory extends Activity {
     Category      = bundle.getString("CategoryName");
     Image         = bundle.getString("ImageName");
     
-    //Toast.makeText(getApplicationContext(), Image, 1000).show();
+    isVoice = BeanClass.getAlphabetSound();
+    
+    //Toast.makeText(getApplicationContext(), "voice:"+isVoice, 1000).show();
    
     btnPrevious   = (Button) findViewById(R.id.btnprevious);
    	btnNext       = (Button) findViewById(R.id.btnnext);
@@ -686,7 +687,9 @@ public class ShowCategory extends Activity {
    	 */
     
     btnPrevious = (Button) findViewById(R.id.btnprevious);
-    btnPrevious.setVisibility(4);	
+   // btnPrevious.setVisibility(4);	
+    btnPrevious.setEnabled(false);
+    btnPrevious.getBackground().setAlpha(128);
     
     btnPrevious.setOnClickListener(new View.OnClickListener() {
 		
@@ -710,7 +713,9 @@ public class ShowCategory extends Activity {
 	     if(temp != 0){
 	    	 
 	    	
-        	btnPrevious.setVisibility(0);
+        	//btnPrevious.setVisibility(0);
+	    	  btnPrevious.getBackground().setAlpha(255);
+	    	  btnPrevious.setEnabled(true);
         	btnNext.setVisibility(0);
         	
         	try{
@@ -773,7 +778,9 @@ public class ShowCategory extends Activity {
 							   //
 						   } 	
 	
-	        	btnPrevious.setVisibility(4);
+	        //	btnPrevious.setVisibility(4);
+			      btnPrevious.setEnabled(false);
+			      btnPrevious.getBackground().setAlpha(128);
 	        	imageView.setVisibility(0);
 	        }
 	       	       
@@ -881,7 +888,9 @@ public class ShowCategory extends Activity {
 	   }   
 		   
 		
-		    btnPrevious.setVisibility(0);
+		   // btnPrevious.setVisibility(0);
+		    btnPrevious.getBackground().setAlpha(255);
+   	    btnPrevious.setEnabled(true);
 		  
 		    if (itotalImage > temp) {
 		    	try{
@@ -893,7 +902,7 @@ public class ShowCategory extends Activity {
 				  imageView     = (ImageView)findViewById(R.id.AImage);
 				  imageView.setImageResource(test);
 				  imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-				  imageView.setClickable(true);
+				  imageView.setEnabled(true);
 		    	 }catch(Exception e){
 		    		 Log.i("Error","Error in 1439 String Array"+e);
     		     }
@@ -1335,8 +1344,11 @@ public class ShowCategory extends Activity {
 		 savelayout.setBackgroundResource(0);
 	   //	 nextPrev.setVisibility(LinearLayout.GONE);
 	   	 
-	   	 btnPrevious.setVisibility(4);
+	   	 //btnPrevious.setVisibility(4);
+		     btnPrevious.setEnabled(false);
+		     btnPrevious.getBackground().setAlpha(128);
 	   	 btnNext.setVisibility(4);
+	   	  // btnNext.setEnabled(false);
 	   	 
 	   	 gestureDetector           = new GestureDetector(new MyGestureDetector());
 	        View mainview          = (View) findViewById(R.id.AImage);
@@ -1449,9 +1461,11 @@ public class ShowCategory extends Activity {
 
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.save_layout);
 		//layout.setVisibility(4);
-		 btnPrevious = (Button) findViewById(R.id.btnprevious);
+		   btnPrevious = (Button) findViewById(R.id.btnprevious);
     	 btnNext = (Button) findViewById(R.id.btnnext);
-    	 btnPrevious.setVisibility(4);
+    	 //btnPrevious.setVisibility(4);
+    	 btnPrevious.setEnabled(false);
+    	 btnPrevious.getBackground().setAlpha(128);
     	 btnNext.setVisibility(4);
     	 
     	 //Toast.makeText(getApplicationContext(), "msg1 msg1", Toast.LENGTH_LONG).show();
@@ -1479,7 +1493,9 @@ public class ShowCategory extends Activity {
 					temp=0;
 				
 		        if(temp != 0){
-		        	btnPrevious.setVisibility(4);
+		        //	btnPrevious.setVisibility(4);
+		        	btnPrevious.setEnabled(false);
+		        	btnPrevious.getBackground().setAlpha(128);
 		        	btnNext.setVisibility(4);
 		        	
 		        	
@@ -1664,7 +1680,10 @@ public class ShowCategory extends Activity {
 	     	          }catch(Exception e){
 	     	        	 Log.i("Error","Error in 1145 String Array"+e);
 	    		       }
-		        	btnPrevious.setVisibility(4);
+		        	//btnPrevious.setVisibility(4);
+	     	           
+	     	      btnPrevious.setEnabled(false);
+	     	      btnPrevious.getBackground().setAlpha(128);
 		        	imageView.setVisibility(0);
 		        }
 		       	       
