@@ -414,11 +414,13 @@ public class ShowCategory extends Activity {
 				        bundle.putInt("musicLength", musicLength);
 				        bundle.putInt("viewScroll", viewScroll);*/
 					 
-				        Intent finishpage = new Intent(ShowCategory.this,ShowAlphabet.class);
+				       // Intent finishpage = new Intent(ShowCategory.this,ShowAlphabet.class);
 				       // finishpage.putExtras(bundle);
-		            startActivity(finishpage);
+		          //  startActivity(finishpage);
 		             
-		             finish();
+		          //   finish();
+				    	
+				    	Toast.makeText(getApplicationContext(), "end", 1000).show();
 				    	
 				    }
 			    } 
@@ -552,23 +554,7 @@ public class ShowCategory extends Activity {
 						//btnPrevious.setVisibility(0);
 						continue;
 					}
-					
 				}
-				
-				
-				
-				
-				
-				
-				
-				   /*   txtHeader.setText(strName); 
-	        	  String str = imageName[0];
-	            str        = str.trim();
-	            str        = str.toLowerCase();
-	            img        = (ImageView)findViewById(R.id.AImage);
-	            int id     = getResources().getIdentifier(str ,"drawable", getPackageName());
-	        	  img.setImageResource(id);*/
-	        	
 			}
 		
 		
@@ -651,8 +637,6 @@ public class ShowCategory extends Activity {
 		 	   final int idsnd1 = getResources().getIdentifier(strsnd1 , "raw", getPackageName());
 		 	   mediaPlayer      = MediaPlayer.create(getBaseContext(), idsnd1);
 		 	   
-		 	  // Toast.makeText(getApplicationContext(), strsnd1, 1000).show();
-		 	   
 		 	   if(isVoice) {
 		 		   mediaPlayer.setVolume(100,100);   
 		 		   
@@ -683,13 +667,18 @@ public class ShowCategory extends Activity {
   
 	    
    	/**
-   	 * Prevoius click event. wil show previous item.
+   	 * Prevoius click event. will show previous item.
    	 */
     
     btnPrevious = (Button) findViewById(R.id.btnprevious);
-   // btnPrevious.setVisibility(4);	
-    btnPrevious.setEnabled(false);
-    btnPrevious.getBackground().setAlpha(128);
+    
+    if(temp<2){
+    	btnPrevious.setEnabled(false);
+    	btnPrevious.getBackground().setAlpha(128);
+    }else{
+    	btnPrevious.setEnabled(true);
+      btnPrevious.getBackground().setAlpha(225);
+    }
     
     btnPrevious.setOnClickListener(new View.OnClickListener() {
 		
@@ -703,7 +692,8 @@ public class ShowCategory extends Activity {
 		   e.fillInStackTrace();
 	}
 	
-		if(temp >= 2){	
+		if(temp >= 2){
+			
 			flipper = (ViewFlipper) findViewById(R.id.flipper);
 			temp    = temp - 2 ;
 			
@@ -716,7 +706,9 @@ public class ShowCategory extends Activity {
         	//btnPrevious.setVisibility(0);
 	    	  btnPrevious.getBackground().setAlpha(255);
 	    	  btnPrevious.setEnabled(true);
-        	btnNext.setVisibility(0);
+        	//btnNext.setVisibility(0);
+	    	  btnNext.setEnabled(true);
+	 			  btnNext.getBackground().setAlpha(225);
         	
         	try{
 	        String strsnd   = soundName[temp];
@@ -747,29 +739,26 @@ public class ShowCategory extends Activity {
 					  //
 				   } 
         	
-        	
-	        	
 	        } else {
-	        	 
+	        	
 	        		String strsnd   = soundName[0];
 			        strsnd          = strsnd.replace(".mp3", "");
 			        strsnd          = strsnd.trim();
 			        strsnd          = strsnd.replaceAll(" ", "_");
+			        
+			        
 			        final int idsnd = getResources().getIdentifier(strsnd , "raw", getPackageName());					                    
-			        try{
-				        mediaPlayer = MediaPlayer.create(getBaseContext(), idsnd);
-						if(isVoice) {
+					    mediaPlayer     = MediaPlayer.create(getBaseContext(), idsnd);
+						
+					    if(isVoice) {
 							mediaPlayer.setVolume(100,100);   //till
 							
 						} else {
 							mediaPlayer.setVolume(0,0);
 						}
-			        }catch(Exception e){
-			        	Log.i("Error","Error in 1079 String Array"+e);
-	    		    }
+			        
 			        
 			        try {
-							   actMediaPlayer.release();
 							   mediaPlayer.start();
 							   isMediaPlayerActive = true;
 						  }catch(Exception e) {
@@ -777,11 +766,9 @@ public class ShowCategory extends Activity {
 						   } finally {
 							   //
 						   } 	
-	
-	        //	btnPrevious.setVisibility(4);
+			        
 			      btnPrevious.setEnabled(false);
 			      btnPrevious.getBackground().setAlpha(128);
-	        	imageView.setVisibility(0);
 	        }
 	       	       
 	        String strcat = imageName[temp];
@@ -810,18 +797,6 @@ public class ShowCategory extends Activity {
 	    	    	   int tmp          = temp - 1 ;
 	    	    	   String strsnd1   = soundName[tmp];
 	    	    	   startMediaplayer(strsnd1);
-	    	    	  /* strsnd1          = strsnd1.replace(".mp3", "");
-	    	    	   strsnd1          = strsnd1.trim();
-	    	    	   strsnd1          = strsnd1.replaceAll(" ", "_");
-	    	    	   final int idsnd1 = getResources().getIdentifier(strsnd1 , "raw", getPackageName());
-	    	    	   mediaPlayer      = MediaPlayer.create(getBaseContext(), idsnd1);
-	    	    	   if(isVoice) {
-	    	    		   mediaPlayer.setVolume(100,100);
-	    	    	   } else {
-	    	    		   mediaPlayer.setVolume(0,0);
-	    	    	   }	   
-	    	    	   mediaPlayer.start();
-	    	    	   isMediaPlayerActive = true;*/
 	    	       	  }
 	    	   	   });
 			
@@ -870,6 +845,16 @@ public class ShowCategory extends Activity {
     
     
     btnNext = (Button) findViewById(R.id.btnnext);	
+    
+   // String answer = String.valueOf(temp);
+  //  Toast.makeText(getApplicationContext(),"temp : "+ answer, Toast.LENGTH_LONG).show();
+    if(temp>5){
+    	btnNext.setEnabled(false);
+    	btnNext.getBackground().setAlpha(128);
+    }else{
+    	btnNext.setEnabled(true);
+  		btnNext.getBackground().setAlpha(225);
+    }
     btnNext.setOnClickListener(new View.OnClickListener() {	
 		
 		public void onClick(View v) {
@@ -1027,30 +1012,20 @@ public class ShowCategory extends Activity {
 			if(temp == itotalImage) {
             	//btnNext.setVisibility(4); //Hide the next button
             	
-            	// change ajay
-            	
-            	
+				 			btnNext.setEnabled(false);
+				 			btnNext.getBackground().setAlpha(128);
             	
             } else {
             	btnNext.setVisibility(0); //Show the next button 
             }    
 		 }else{
+			      
+			     
+			 /*
+			  * code for goto next page automaticly.
+			  * 
+			  */
 			 
-			// change ajay
-			 
-			   /* final Bundle bundle = new Bundle();
-			    bundle.putString("isCommingFromLearning", "true");
-				  bundle.putString("isCommingFromQuestion", "false");
-	        bundle.putString("CategoryName", Category);
-	        bundle.putStringArrayList("NextCategoryName", NextFlashCategory);
-	        bundle.putInt("Position", position);
-	        bundle.putInt("musicLength", musicLength);
-	        bundle.putInt("viewScroll", viewScroll);*/
-				  Intent finishpage = new Intent(ShowCategory.this,LearnAlphabets.class);
-				 //finishpage.putExtras(bundle);
-				 //BeanClass.setAlphabetSelected("B");
-	       startActivity(finishpage);
-	       finish(); 
 		 }
 	     
 	  }	
@@ -1758,12 +1733,5 @@ public class ShowCategory extends Activity {
 		Intent i = new Intent(this, ShowAlphabet.class);
 		startActivity(i); 
 		finish();
-	}
-
-	
-	
-	@Override
-	public void onDestroy() {
-	        super.onDestroy();
 	}
 }

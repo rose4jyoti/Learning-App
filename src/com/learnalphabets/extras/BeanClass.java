@@ -6,7 +6,7 @@ public class BeanClass {
 	
 	private static String alphabetPos;
 	private static boolean alphabetSound = true;
-	private static boolean bgSound = false;
+	private static boolean bgSound = true;
 	private static ArrayList<String> arrayListValue;
 	
 	public static void setAlphabetSelected(String alphabet){

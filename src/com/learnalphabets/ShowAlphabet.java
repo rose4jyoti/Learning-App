@@ -43,11 +43,12 @@ public class ShowAlphabet extends Activity {
 		
 			String[] testingAlphabets = new String[]{"test","test","test","test","test","test"};
 			
-			gridView.setAdapter(new AlphabetAdapter(this, testingAlphabets));
-	  	
-			
+			//gridView.setAdapter(new AlphabetAdapter(this, testingAlphabets));
+     
 		
 		}else{
+			
+		
 		
 		 /*
 		  * Set database
@@ -103,4 +104,5 @@ public class ShowAlphabet extends Activity {
 		startActivity(i);
 		finish();
 	}
+	
 }

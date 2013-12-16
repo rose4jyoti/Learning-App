@@ -54,9 +54,19 @@ public class LearnAlphabets extends Activity {
 					
 					BeanClass.setAlphabetSelected(alphabet);
 					
-					Intent i = new Intent(getApplicationContext(), ShowAlphabet.class);
-					startActivity(i);
-					finish();
+					
+					 char c = alphabet.charAt(0);
+						int alphabet_int = (int)c;
+				    if(alphabet_int>70){
+				    	
+				    	Toast.makeText(getApplicationContext(), "download full version", 1000).show();
+				    	
+				    }else{
+				    	
+				    	Intent i = new Intent(getApplicationContext(), ShowAlphabet.class);
+				    	startActivity(i);
+				    	finish();
+				  }
 				   
 				}
 			});
@@ -69,5 +79,7 @@ public class LearnAlphabets extends Activity {
 			startActivity(i);
 			finish();
 		}
+		
+	
 	 
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import com.learnalphabet.database.DataBaseHelper;
 import com.learnalphabets.R.raw;
+import com.learnalphabets.extras.BeanClass;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -2351,9 +2352,9 @@ public class QuestionCategory extends Activity  {
 		 	    	int idsnd1     = getResources().getIdentifier(strsnd1 , "raw", getPackageName());
 		 	    		try{
 			 	    	     mediaPlayer.reset();
-		 		    		 mediaPlayer = MediaPlayer.create(getBaseContext(), idsnd1);
-			 	    		 mediaPlayer.setVolume(100, 100);
-			 	    		 mediaPlayer.start();
+		 		    		   mediaPlayer = MediaPlayer.create(getBaseContext(), idsnd1);
+			 	    		   mediaPlayer.setVolume(100, 100);
+			 	    		   mediaPlayer.start();
 			 	    		 
 			 	    		
 				        }catch(Exception e){
@@ -2583,14 +2584,11 @@ public void unbindDrawables(View view) {
 	public void onBackPressed() {
 	// btnHome.setOnClickListener(homeListener);
 	//Toast.makeText(getApplicationContext(), "method end", Toast.LENGTH_LONG).show();
-	    Bundle bundle = new Bundle();
-        bundle.putInt("musicLength", musicLength);
-        bundle.putInt("viewScroll", viewScroll);
-        
+	   
 	    Intent i = new Intent(this, HomeScreen.class);
 	   // i.putExtras(bundle);
-		startActivity(i); 
-		finish();
+		  startActivity(i); 
+		  finish();
 	
 }
  
@@ -2611,15 +2609,6 @@ public void unbindDrawables(View view) {
 			android.os.SystemClock.sleep(800);
 	 }
 */
-
-@Override
-public void onDestroy(){
-	
-      super.onDestroy();
-    //  Toast.makeText(getApplicationContext(), "destroy", Toast.LENGTH_LONG).show();
-  }
-
-
 
 
 } //end of main

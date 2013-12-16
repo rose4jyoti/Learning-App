@@ -1,7 +1,10 @@
 package com.learnalphabets;
 
 
+import com.learnalphabets.extras.BeanClass;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +15,7 @@ public class HomeScreen extends Activity {
 
 	private Button learnAlphabets, visualizeAlphabets;
 	private ImageView setting;
+	private Context mContext;
 	
 	
 	@Override
@@ -52,5 +56,12 @@ public class HomeScreen extends Activity {
      });
 		
 	}
+	
+	@Override
+	public void onBackPressed() {
+		SplashScreen.mediaPlayer.stop();
+		finish();
+	}
+	
 
 }
