@@ -84,10 +84,10 @@ public class ShowAlphabet extends Activity {
 				String aName = (String) ((TextView) v.findViewById(R.id.label)).getText();
 				
 			//	Toast.makeText(getApplicationContext(),aName, Toast.LENGTH_SHORT).show();
-				
+				SplashScreen.mediaPlayer.pause();
 				Bundle bundle = new Bundle();
-        bundle.putString("CategoryName", oneAlphabet);
-        bundle.putString("ImageName",aName);
+				bundle.putString("CategoryName", oneAlphabet);
+				bundle.putString("ImageName",aName);
 				Intent i = new Intent(getApplicationContext(), ShowCategory.class);
 				i.putExtras(bundle);
 				startActivity(i);
@@ -104,5 +104,22 @@ public class ShowAlphabet extends Activity {
 		startActivity(i);
 		finish();
 	}
+	
+	@Override 
+	protected void onPause() 
+	  { 
+		
+	      super.onPause(); 
+	      SplashScreen.mediaPlayer.pause();
+	  }
+	@Override 
+	protected void onResume() 
+	  { 
+		
+	      super.onResume(); 
+	      if(BeanClass.getBgSound()){
+		      SplashScreen.mediaPlayer.start();
+		   }
+	   }
 	
 }

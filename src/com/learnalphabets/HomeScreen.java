@@ -27,7 +27,7 @@ public class HomeScreen extends Activity {
 		setting = (ImageView)findViewById(R.id.setting);
 		
 		
-		learnAlphabets.setOnClickListener(new View.OnClickListener() {
+      learnAlphabets.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {				
       	
       	Intent i = new Intent(getApplicationContext(), LearnAlphabets.class);
@@ -38,7 +38,7 @@ public class HomeScreen extends Activity {
      });
 		visualizeAlphabets.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {				
-      	
+    	SplashScreen.mediaPlayer.pause();
       	Intent i = new Intent(getApplicationContext(), QuestionCategory.class);
       	startActivity(i);
       	finish();
@@ -57,11 +57,21 @@ public class HomeScreen extends Activity {
 		
 	}
 	
-	@Override
-	public void onBackPressed() {
-		SplashScreen.mediaPlayer.stop();
-		finish();
-	}
-	
+	@Override 
+	protected void onPause() 
+	  { 
+		
+	      super.onPause(); 
+	      SplashScreen.mediaPlayer.pause();
+	  }
+	@Override 
+	protected void onResume() 
+	  { 
+		
+	      super.onResume(); 
+	      if(BeanClass.getBgSound()){
+	      SplashScreen.mediaPlayer.start();
+	      }
+	   }
 
 }

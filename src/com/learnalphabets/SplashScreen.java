@@ -20,24 +20,23 @@ public class SplashScreen extends Activity{
 		setContentView(R.layout.splash_screen);
 		
 		mediaPlayer = new  MediaPlayer();
-    mediaPlayer = MediaPlayer.create(SplashScreen.this, R.raw.bg);
-    mediaPlayer.setLooping(true);
+        mediaPlayer = MediaPlayer.create(SplashScreen.this, R.raw.bg);
 		
 		splashStart = (Button)findViewById(R.id.splash_start);
 		
 		splashStart.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {				
-      	//mediaPlayer.start();
+        public void onClick(View view) {				
+      	mediaPlayer.start();
+      	mediaPlayer.setLooping(true);
       	Intent i = new Intent(getApplicationContext(), HomeScreen.class);
 		    startActivity(i);
 		    finish();
-    	
       }
      });
 		
 		
 		
-		 //   String answer = String.valueOf(viewScroll);
+     //   String answer = String.valueOf(viewScroll);
     //	  Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_LONG).show();
 		
 	}

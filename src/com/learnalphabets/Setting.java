@@ -65,11 +65,11 @@ public class Setting extends Activity{
 			if (((CheckBox) v).isChecked()) {
 				
 				BeanClass.setBgSound(true);
-			//	SplashScreen.mediaPlayer.start();
+				SplashScreen.mediaPlayer.start();
 				
 			}else{
 				BeanClass.setBgSound(false);
-			//	SplashScreen.mediaPlayer.pause();
+				SplashScreen.mediaPlayer.pause();
 			}
 	 
 		  }
@@ -83,5 +83,21 @@ public class Setting extends Activity{
 		startActivity(i);
 		finish();
 	}
+	@Override 
+	protected void onPause() 
+	  { 
+		
+	      super.onPause(); 
+	      SplashScreen.mediaPlayer.pause();
+	  }
+	@Override 
+	protected void onResume() 
+	  { 
+		
+	      super.onResume(); 
+	      if(BeanClass.getBgSound()){
+		      SplashScreen.mediaPlayer.start();
+		   }
+	   }
 	
 }
