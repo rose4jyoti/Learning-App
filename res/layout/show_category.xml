@@ -3,7 +3,7 @@
     android:id="@+id/home_container"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#fff" >
+    android:background="#F9FFE5" >
 
     <ViewFlipper
         android:id="@+id/flipper"
@@ -69,12 +69,10 @@
             android:id="@+id/btnStrip"
             android:layout_width="fill_parent"
             android:layout_height="50dip"
-            android:background="#fff"
+            android:background="#F9FFE5"
             android:gravity="center"
             android:layout_marginBottom="40dp"
-            android:orientation="horizontal" >
-            
-          
+            android:orientation="horizontal" >          
 
             <Button
                 android:id="@+id/btnprevious"
@@ -83,8 +81,8 @@
                 android:layout_marginBottom="1dip"
                 android:layout_marginTop="1dip"
                 android:layout_marginRight="50dip"
-                android:background="@drawable/previous" 
-                >
+                android:background="@drawable/previous" >
+                
             </Button>
             
             <TextView

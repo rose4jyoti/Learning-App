@@ -39,7 +39,6 @@
             android:id="@+id/setting_btn1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignRight="@+id/header"
             android:background="@drawable/setting_icn"
             android:visibility="gone"
             android:scaleType="centerInside" />
@@ -91,21 +90,20 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginBottom="50dp"
-         android:layout_above="@id/bottom_layout"
-	     android:layout_below="@+id/home_btn1">
+        android:layout_above="@id/bottom_layout"
+	    android:layout_below="@+id/home_btn1">
 
 	 <ViewFlipper
 	     android:id="@+id/flipper"
 	     android:layout_width="fill_parent"
 	     android:layout_height="fill_parent"
-	     android:layout_below="@+id/home_btn1"
 	     android:layout_marginTop="50dip" >
 
             <include
                 android:id="@+id/first"
                 android:layout_gravity="center"
                 layout="@layout/questionview" />
-        </ViewFlipper>
+      </ViewFlipper>
     </RelativeLayout>
     
 </FrameLayout>
