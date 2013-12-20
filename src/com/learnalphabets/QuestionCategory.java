@@ -1,5 +1,6 @@
 package com.learnalphabets;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 import com.learnalphabet.database.DataBaseHelper;
@@ -77,18 +78,18 @@ public class QuestionCategory extends Activity  {
    private String[] textHeaderArray;
    private String[] StringArray3;
    
-   private int id1;
-   private int fimage3;
-	 private int fimage2;
-	 private int fimage;
+     private int id1;
+     private int fimage3;
+     private int fimage2;
+     private int fimage;
 	 private int fimage1;
 	 private int Oimage3;
 	 private int Oimage2;
 	 private int Oimage;
 	 private int Oimage1;
-   private int InCorrNum;
-   private int CorrNum;
-   private int itotalImage;
+     private int InCorrNum;
+     private int CorrNum;
+     private int itotalImage;
 	 private int TotalImage;
 	 public  int temp       = 1;
 	 private int CorrsndLit = 0;
@@ -1524,7 +1525,7 @@ public class QuestionCategory extends Activity  {
 				     		
 				     			
 				     		// correctSound();
-				     		 right_Image1.setVisibility(0); 
+				     		    right_Image1.setVisibility(0); 
 						 	    String corrsnd1 =StringCorrSound[CorrNum];
 						 	    corrsnd1 = corrsnd1.replace(".mp3", "");
 						 	    corrsnd1 = corrsnd1.trim();
@@ -2528,14 +2529,23 @@ public ArrayList<Integer> GenRandomImage(int size) {
  * Populate sound array from raw folder.
  */
 private void populatesoundArray(){
-	
+	CorrtSoundArray.add(Integer.toString(raw.youareawesome));
+    CorrtSoundArray.add(Integer.toString(raw.beautiful));
+    CorrtSoundArray.add(Integer.toString(raw.bravo));
     CorrtSoundArray.add(Integer.toString(raw.excellent));
+    CorrtSoundArray.add(Integer.toString(raw.fantastic));
     CorrtSoundArray.add(Integer.toString(raw.goodanswer));
+    CorrtSoundArray.add(Integer.toString(raw.goodjob));
+    CorrtSoundArray.add(Integer.toString(raw.great));
+    CorrtSoundArray.add(Integer.toString(raw.marvelous));
+    CorrtSoundArray.add(Integer.toString(raw.sensational));
+    CorrtSoundArray.add(Integer.toString(raw.spectacular));
+    InCorrtSoundArray.add(Integer.toString(raw.oopsie));
     InCorrtSoundArray.add(Integer.toString(raw.tryagain));
+    InCorrtSoundArray.add(Integer.toString(raw.uhoh));
     InCorrtSoundArray.add(Integer.toString(raw.youcandoit));
     
     StringCorrSound   = (String[]) CorrtSoundArray.toArray(new String[CorrtSoundArray.size()]);
-    
     StringInCorrSound = (String[]) InCorrtSoundArray.toArray(new String[InCorrtSoundArray.size()]);
 }
 public void waitForOpen(){

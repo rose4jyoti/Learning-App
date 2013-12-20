@@ -85,16 +85,12 @@ public class LearnAlphabets extends Activity {
 		  { 
 			
 		      super.onPause(); 
-		      SplashScreen.mediaPlayer.pause();
 		  }
 		@Override 
 		protected void onResume() 
 		  { 
 			
 		      super.onResume(); 
-		      if(BeanClass.getBgSound()){
-			      SplashScreen.mediaPlayer.start();
-			   }
 		   }
 	 
 	}

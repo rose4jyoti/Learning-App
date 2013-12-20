@@ -23,10 +23,7 @@ public class Setting extends Activity{
 	public void onCreate (Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.setting);
-		
-		mPlayer = new  MediaPlayer();
-		mPlayer = MediaPlayer.create(Setting.this, R.raw.bg);
-		
+				
 		chk1 = (CheckBox)findViewById(R.id.check1);
 		chk2 = (CheckBox)findViewById(R.id.check2);
 		
@@ -65,11 +62,9 @@ public class Setting extends Activity{
 			if (((CheckBox) v).isChecked()) {
 				
 				BeanClass.setBgSound(true);
-				SplashScreen.mediaPlayer.start();
 				
 			}else{
 				BeanClass.setBgSound(false);
-				SplashScreen.mediaPlayer.pause();
 			}
 	 
 		  }
@@ -88,16 +83,12 @@ public class Setting extends Activity{
 	  { 
 		
 	      super.onPause(); 
-	      SplashScreen.mediaPlayer.pause();
 	  }
 	@Override 
 	protected void onResume() 
 	  { 
 		
 	      super.onResume(); 
-	      if(BeanClass.getBgSound()){
-		      SplashScreen.mediaPlayer.start();
-		   }
 	   }
 	
 }

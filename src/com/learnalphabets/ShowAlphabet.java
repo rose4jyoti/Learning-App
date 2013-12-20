@@ -37,23 +37,13 @@ public class ShowAlphabet extends Activity {
 		currentText.setText(oneAlphabet);
 		
 		
-		if(!(oneAlphabet.equals("A"))){
-			
-			Toast.makeText(getApplicationContext(),"Testing Please click on A text", Toast.LENGTH_SHORT).show();
 		
-			String[] testingAlphabets = new String[]{"test","test","test","test","test","test"};
-			
-			//gridView.setAdapter(new AlphabetAdapter(this, testingAlphabets));
-     
-		
-		}else{
-			
 		
 		
 		 /*
 		  * Set database
 		  */
-		DataBaseAdapter mDbHelper = new DataBaseAdapter(this);         
+    DataBaseAdapter mDbHelper = new DataBaseAdapter(this);         
   	mDbHelper.createDatabase();       
   	mDbHelper.open();
   	mDbHelper.getSixAlphabet(oneAlphabet);
@@ -71,8 +61,6 @@ public class ShowAlphabet extends Activity {
 		}
 		gridView.setAdapter(new AlphabetAdapter(this, alphabets));
   	
-		}
-		
     /*
      * get the name by clicking on gridview
      */
@@ -84,7 +72,6 @@ public class ShowAlphabet extends Activity {
 				String aName = (String) ((TextView) v.findViewById(R.id.label)).getText();
 				
 			//	Toast.makeText(getApplicationContext(),aName, Toast.LENGTH_SHORT).show();
-				SplashScreen.mediaPlayer.pause();
 				Bundle bundle = new Bundle();
 				bundle.putString("CategoryName", oneAlphabet);
 				bundle.putString("ImageName",aName);
@@ -110,7 +97,6 @@ public class ShowAlphabet extends Activity {
 	  { 
 		
 	      super.onPause(); 
-	      SplashScreen.mediaPlayer.pause();
 	  }
 	@Override 
 	protected void onResume() 
@@ -118,7 +104,6 @@ public class ShowAlphabet extends Activity {
 		
 	      super.onResume(); 
 	      if(BeanClass.getBgSound()){
-		      SplashScreen.mediaPlayer.start();
 		   }
 	   }
 	

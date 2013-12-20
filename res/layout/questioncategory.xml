@@ -39,7 +39,7 @@
             android:id="@+id/setting_btn1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/setting_icn"
+            android:background="@drawable/setting_icon"
             android:visibility="gone"
             android:scaleType="centerInside" />
     </RelativeLayout>
@@ -85,7 +85,6 @@
 
       
     </RelativeLayout>
-
       <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

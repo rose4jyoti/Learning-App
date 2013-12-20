@@ -46,18 +46,6 @@ public class AlphabetAdapter extends BaseAdapter {
 			
 
 			String oneAlphabet = alphabets[position];
-		
-			
-			/*Method m;
-			try {
-				m = R.drawable.class.getMethod("apple");
-				flag.setImageResource((Integer)m.invoke(null));
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			*/
-			
 	  	
 	  	/*
 	  	 * get the six alphabet name from database 
@@ -92,7 +80,9 @@ public class AlphabetAdapter extends BaseAdapter {
 				flag.setImageResource(id6);
 			} else{
 				flag.setImageResource(R.drawable.def);
-		  }
+		    }
+			
+			
 
 		} else {
 			gridView = (View) convertView;

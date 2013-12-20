@@ -37,8 +37,7 @@ public class HomeScreen extends Activity {
       }
      });
 		visualizeAlphabets.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {				
-    	SplashScreen.mediaPlayer.pause();
+      public void onClick(View view) {		
       	Intent i = new Intent(getApplicationContext(), QuestionCategory.class);
       	startActivity(i);
       	finish();
@@ -62,16 +61,12 @@ public class HomeScreen extends Activity {
 	  { 
 		
 	      super.onPause(); 
-	      SplashScreen.mediaPlayer.pause();
 	  }
 	@Override 
 	protected void onResume() 
 	  { 
 		
 	      super.onResume(); 
-	      if(BeanClass.getBgSound()){
-	      SplashScreen.mediaPlayer.start();
-	      }
 	   }
 
 }

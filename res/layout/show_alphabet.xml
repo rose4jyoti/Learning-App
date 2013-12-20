@@ -17,7 +17,6 @@
           android:text="Learn Alphabets"
           android:textColor="#fff"
           android:textSize="26sp" />
-        
     </LinearLayout>
     <LinearLayout 
         android:layout_width="match_parent"
