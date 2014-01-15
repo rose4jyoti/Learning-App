@@ -22,8 +22,8 @@ public class ShowAlphabet extends Activity {
 
 	private TextView currentText;
 	private GridView gridView;
-  private String oneAlphabet;
-  private String[] alphabets = new String[6]; 
+    private String oneAlphabet;
+    private String[] alphabets = new String[6]; 
 
 	
 	@Override

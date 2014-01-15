@@ -181,14 +181,6 @@ public class QuestionCategory extends Activity  {
     flipper      = (ViewFlipper) findViewById(R.id.flipper);
     
     
- /*   BitmapFactory.Options options = new BitmapFactory.Options();
-      options.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(getResources(), R.id.image1, options);
-      int imageHeight = options.outHeight;
-      int imageWidth = options.outWidth;
-      String imageType = options.outMimeType;*/
-      
-     // Toast.makeText(getApplicationContext(), imageHeight, Toast.LENGTH_LONG).show();
    
     
     cross_Image1.setAlpha(250);
@@ -201,39 +193,7 @@ public class QuestionCategory extends Activity  {
     right_Image3.setAlpha(250);
     right_Image4.setAlpha(250);
     
-   
-      
-     /* Bundle bundle = this.getIntent().getExtras();
-    Category      = bundle.getString("CategoryName");
-    position      = bundle.getInt("Position");
-    NextCategory  = bundle.getStringArrayList("NextCategoryName");
-    fromFinish    =bundle.getInt("fromFinish");
-    musicLength   = bundle.getInt("musicLength");
-    viewScroll   = bundle.getInt("viewScroll");
-    
-   */
-    
-   
-   /* try {
-	 //fetching record from setting table.
-	   SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-	   qb.setTables("tbl_settings");
-	   SQLiteDatabase db     = myDbHelper.getReadableDatabase();
-	   db                    = myDbHelper.getReadableDatabase();
-	   Cursor c              = qb.query(db,null,null,null,null, null, null );
-	   if (c.moveToFirst()) {
-	    	isVoice = c.getInt(1) == 0 ? false : true;
-	   } else {
-	    	Toast.makeText(this, "No Record found",Toast.LENGTH_LONG).show();        
-	   }
-	   c.close();
-	   db.close();   
-    } catch (Exception e) {
-	   e.fillInStackTrace();
-    } finally {
-	   //
-    }   
-   */
+ 
     text  = (TextView) findViewById(R.id.headerText);
     final ImageButton btnSetting = (ImageButton) findViewById(R.id.setting_btn1);
     btnSetting.cancelLongPress();
@@ -254,14 +214,9 @@ public class QuestionCategory extends Activity  {
      */
    	populatesoundArray();
 
-   	
-   	
-   	
-   	
-   	System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-   	
-   	
-   	
+   	/*
+   	 * setup database
+   	 */
     myDbHelper = new DataBaseHelper(this);
    	
     //Fetching the record from items
@@ -282,10 +237,7 @@ public class QuestionCategory extends Activity  {
     cur.close();
     dbOne.close();
     
-    
-    
-    
-  	System.out.println("llllllllllllllllllllllllllllllllllllllllllllllll");
+
     // Array result for 1 image
     arrayResult  = GenRandomNum(arrayID);  
     // Array result for 3 image
@@ -301,7 +253,7 @@ public class QuestionCategory extends Activity  {
           
 	     if(resultcur.moveToFirst()) {	    	 
 	      	 arrayImage.add(resultcur.getString(2));
-	    	   arraySound.add(resultcur.getString(3));         
+	    	 arraySound.add(resultcur.getString(3));         
 	         textHeader.add(resultcur.getString(2));
 	     }
 	     StringArray     = (String[]) arrayImage.toArray(new String[arrayImage.size()]);
@@ -499,7 +451,7 @@ public class QuestionCategory extends Activity  {
 			     } 			    
 			       
 			     	
-		    	    cross_Image2.setVisibility(0);
+		    	      cross_Image2.setVisibility(0);
 			     	  cross_Image3.setVisibility(0);
 			     	  cross_Image4.setVisibility(0);
 			     	
@@ -625,7 +577,7 @@ public class QuestionCategory extends Activity  {
 					// text.setText(textHeaderArray[0]);
 				}
 			 }, 100);
-               ///////////// Clickon Sound////////////////// 
+            ///////////// Clickon Sound////////////////// 
      		String sndclickon1     = Integer.toString(R.raw.clickon);
      		sndclickon1            = sndclickon1.replace(".mp3", "");
      		sndclickon1            = sndclickon1.trim();
@@ -1070,7 +1022,7 @@ public class QuestionCategory extends Activity  {
 	 		 }   
  		     break;
          case 3:
-         image_1.setImageResource(fimage1);
+             image_1.setImageResource(fimage1);
  		     image_2.setImageResource(fimage2);
  		     image_3.setImageResource(fimage3);
  		     image_4.setImageResource(fimage);
@@ -1661,7 +1613,7 @@ public class QuestionCategory extends Activity  {
 						 	    	 mediaPlayer.reset();
 			 	 		    		 mediaPlayer = MediaPlayer.create(getBaseContext(), idsnd1);
 			 		 	    		 mediaPlayer.setVolume(100, 100);
-			 	 		     	   mediaPlayer.start();
+			 	 		     	     mediaPlayer.start();
 						 	    	
 						 	    	
 					 	    	 }catch(Exception e){
@@ -2294,15 +2246,7 @@ public class QuestionCategory extends Activity  {
 				 	 if(temp == itotalImage) {
 				    	 mHandler.postDelayed(new Runnable() {
 								public void run() {
-								/*	final Bundle bundle = new Bundle();
-									bundle.putString("isCommingFromLearning", "false");
-			 						bundle.putString("isCommingFromQuestion", "true");
-							        bundle.putString("CategoryName", Category);
-							        bundle.putStringArrayList("NextCategoryName", NextFlashCategory);   
-							        bundle.putInt("Position", position);
-							        bundle.putInt("musicLength", musicLength);
-							        bundle.putInt("viewScroll", viewScroll);
-								*/
+								
 									Intent i = new Intent(QuestionCategory.this,HomeScreen.class);
 								//	i.putExtras(bundle);
 						            startActivity(i);
@@ -2483,15 +2427,7 @@ private OnClickListener homeListener = new OnClickListener() {
  */
 private OnClickListener settingsListener = new OnClickListener() {
 	public void onClick(View v) {
-		// do something when the button is clicked
-		/* final Bundle bundleSetting = new Bundle();
- 		 bundleSetting.putString("isCommingFromLearning", "false");
- 		 bundleSetting.putString("isCommingFromQuestion", "true");
- 		 bundleSetting.putString("CategoryName", Category);
- 		 bundleSetting.putInt("position", position);
- 		 bundleSetting.putInt("musicLength", musicLength);
- 		 bundleSetting.putStringArrayList("NextCategoryName", NextFlashCategory);
- 		 bundleSetting.putInt("viewScroll", viewScroll);*/
+		
  		try {
       		mediaPlayer.stop();
   			mediaPlayer.reset();
@@ -2581,7 +2517,7 @@ public void unbindDrawables(View view) {
       view.getBackground().setCallback(null);
       }
       if (view instanceof ViewGroup) {
-          for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+          for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++){
           unbindDrawables(((ViewGroup) view).getChildAt(i));
           }
       ((ViewGroup) view).removeAllViews();
@@ -2592,33 +2528,14 @@ public void unbindDrawables(View view) {
 
  @Override
 	public void onBackPressed() {
-	// btnHome.setOnClickListener(homeListener);
-	//Toast.makeText(getApplicationContext(), "method end", Toast.LENGTH_LONG).show();
-	   
-	    Intent i = new Intent(this, HomeScreen.class);
-	   // i.putExtras(bundle);
+	 
+	      mediaPlayer.stop();
+		  clickONPlayer.stop(); 
+	     
+	      Intent i = new Intent(this, HomeScreen.class);
 		  startActivity(i); 
 		  finish();
 	
 }
  
-/* private void correctSound(){
-	 
-	// for extra sound 
-	   // android.os.SystemClock.sleep(1000);
-		mediaPlayer1 = MediaPlayer.create(this, R.raw.right_answer);
-		mediaPlayer1.start();
-		android.os.SystemClock.sleep(700);
- }
- private void rongSound(){
-	 
-		// for extra sound 
-	        //
-			mediaPlayer1 = MediaPlayer.create(this, R.raw.wrong_answer);
-			mediaPlayer1.start();
-			android.os.SystemClock.sleep(800);
-	 }
-*/
-
-
 } //end of main
